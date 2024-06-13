@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: SkyProfile-314644433851835836
   m_EditorClassIdentifier: 
   skyColor: {r: 0.18178178, g: 0.5782364, b: 0.8962264, a: 1}
-  horizonColor: {r: 0.7830189, g: 0.7654523, b: 0.7276166, a: 1}
-  groundColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+  horizonColor: {r: 0.28315237, g: 0.7739929, b: 0.9528302, a: 1}
+  groundColor: {r: 0, g: 0.6310754, b: 1, a: 1}
   horizonThickness: 1
-  horizonExponent: 3
+  horizonExponent: 50
   horizonStep: 500
   fogSyncOption: 2
   fogColor: {r: 0, g: 0, b: 0, a: 0}
@@ -63,24 +63,24 @@ MonoBehaviour:
   moonCubemap: {fileID: 0}
   moonLightColor: {r: 0, g: 0, b: 0, a: 0}
   moonLightIntensity: 0
-  customCloudTexture: {fileID: 2800000, guid: d69d12cf3b1e2b144881667c78b2e4f9, type: 3}
+  customCloudTexture: {fileID: 2800000, guid: 433abcf8c760aa746a5580cd0a190b51, type: 3}
   enableHorizonCloud: 1
-  horizonCloudColor: {r: 1, g: 1, b: 1, a: 1}
+  horizonCloudColor: {r: 1, g: 1, b: 1, a: 0.31764707}
   horizonCloudStartPosition: -0.99
   horizonCloudEndPosition: 0.65
-  horizonCloudSize: 2.21
+  horizonCloudSize: 79.1
   horizonCloudStep: 25
   horizonCloudAnimationSpeed: 50
-  enableOverheadCloud: 0
-  overheadCloudColor: {r: 1, g: 1, b: 1, a: 0.5647059}
-  overheadCloudAltitude: 70.17
-  overheadCloudSize: 5.53
+  enableOverheadCloud: 1
+  overheadCloudColor: {r: 1, g: 1, b: 1, a: 0.24705882}
+  overheadCloudAltitude: 997.61
+  overheadCloudSize: 4
   overheadCloudStep: 2
   overheadCloudAnimationSpeed: 50
   overheadCloudFlowDirectionX: 1
   overheadCloudFlowDirectionZ: 1
-  overheadCloudRemapMin: 0
-  overheadCloudRemapMax: 0
+  overheadCloudRemapMin: 0.1
+  overheadCloudRemapMax: 3
   overheadCloudCastShadow: 0
   overheadCloudShadowClipMask: 0
   enableDetailOverlay: 1
@@ -106,6 +106,7 @@ Material:
   - ALLOW_STEP_EFFECT
   - DETAIL_OVERLAY
   - HORIZON_CLOUD
+  - OVERHEAD_CLOUD
   - STARS_LAYER_0
   - SUN
   m_InvalidKeywords: []
@@ -153,23 +154,23 @@ Material:
     - _DetailOverlayRotationSpeed: 0
     - _HorizonCloudAnimationSpeed: 50
     - _HorizonCloudEndPosition: 0.65
-    - _HorizonCloudSize: 2.21
+    - _HorizonCloudSize: 79.1
     - _HorizonCloudStartPosition: -0.99
     - _HorizonCloudStep: 25
-    - _HorizonExponent: 3
+    - _HorizonExponent: 50
     - _HorizonStep: 500
     - _HorizonThickness: 1
     - _MoonGlow: 0
     - _MoonLightIntensity: 0
     - _MoonSize: 0
     - _MoonSoftEdge: 0
-    - _OverheadCloudAltitude: 70.17
+    - _OverheadCloudAltitude: 997.61
     - _OverheadCloudAnimationSpeed: 50
     - _OverheadCloudFlowDirectionX: 1
     - _OverheadCloudFlowDirectionZ: 1
-    - _OverheadCloudRemapMax: 0
-    - _OverheadCloudRemapMin: 0
-    - _OverheadCloudSize: 5.53
+    - _OverheadCloudRemapMax: 3
+    - _OverheadCloudRemapMin: 0.1
+    - _OverheadCloudSize: 4
     - _OverheadCloudStep: 2
     - _StarsDensity0: 0.01
     - _StarsDensity1: 0
@@ -193,19 +194,19 @@ Material:
     m_Colors:
     - _DetailOverlayTintColor: {r: 0, g: 0, b: 0, a: 0}
     - _FogColor: {r: 0, g: 0, b: 0, a: 0}
-    - _GroundColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
-    - _HorizonCloudColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HorizonColor: {r: 0.7830189, g: 0.7654523, b: 0.7276166, a: 1}
+    - _GroundColor: {r: 0, g: 0.6310754, b: 1, a: 1}
+    - _HorizonCloudColor: {r: 1, g: 1, b: 1, a: 0.31764707}
+    - _HorizonColor: {r: 0.28315237, g: 0.7739929, b: 0.9528302, a: 1}
     - _MoonColor: {r: 0, g: 0, b: 0, a: 0}
     - _MoonDirection: {r: 1, g: 1, b: 1, a: 0}
     - _MoonLightColor: {r: 0, g: 0, b: 0, a: 0}
-    - _OverheadCloudColor: {r: 1, g: 1, b: 1, a: 0.5647059}
+    - _OverheadCloudColor: {r: 1, g: 1, b: 1, a: 0.24705882}
     - _SkyColor: {r: 0.18178178, g: 0.5782364, b: 0.8962264, a: 1}
     - _StarsColor0: {r: 0, g: 0, b: 0, a: 0}
     - _StarsColor1: {r: 0, g: 0, b: 0, a: 0}
     - _StarsColor2: {r: 0, g: 0, b: 0, a: 0}
     - _SunColor: {r: 1, g: 0.9700814, b: 0.9009434, a: 1}
-    - _SunDirection: {r: -0.86814463, g: -0.26875162, b: -0.41724983, a: 0}
+    - _SunDirection: {r: -0.5375981, g: -0.7705132, b: -0.34248784, a: 0}
     - _SunLightColor: {r: 1, g: 0.9929226, b: 0.9009434, a: 1}
   m_BuildTextureStacks: []
 --- !u!21 &9196172201822775555
@@ -224,6 +225,7 @@ Material:
   m_InvalidKeywords:
   - DETAIL_OVERLAY
   - HORIZON_CLOUD
+  - OVERHEAD_CLOUD
   - STARS_LAYER_0
   - SUN
   m_LightmapFlags: 4
@@ -238,15 +240,15 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _OverheadCloudAltitude: 70.17
+    - _OverheadCloudAltitude: 997.61
     - _OverheadCloudAnimationSpeed: 50
     - _OverheadCloudFlowDirectionX: 1
     - _OverheadCloudFlowDirectionZ: 1
-    - _OverheadCloudRemapMax: 0
-    - _OverheadCloudRemapMin: 0
+    - _OverheadCloudRemapMax: 3
+    - _OverheadCloudRemapMin: 0.1
     - _OverheadCloudShadowClipMask: 0
-    - _OverheadCloudSize: 5.53
+    - _OverheadCloudSize: 4
     - _OverheadCloudStep: 2
     m_Colors:
-    - _OverheadCloudColor: {r: 1, g: 1, b: 1, a: 0.5647059}
+    - _OverheadCloudColor: {r: 1, g: 1, b: 1, a: 0.24705882}
   m_BuildTextureStacks: []
