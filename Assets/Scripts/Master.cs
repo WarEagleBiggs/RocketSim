@@ -10,6 +10,7 @@ public class Master : MonoBehaviour
     public float UpwardVelocity;
     public Vector3 wind;
     public TextMeshProUGUI Velocity;
+    public TextMeshProUGUI Altidude;
     
     
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class Master : MonoBehaviour
         
         Rocket1_rb.AddForce(wind);
         Velocity.SetText(Rocket1_rb.velocity.magnitude.ToString("0" + " m/s"));
+        Altidude.SetText(Rocket1.transform.position.y.ToString("0" + " m"));
     }
 
     public void RunSim()
