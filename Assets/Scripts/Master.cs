@@ -21,10 +21,12 @@ public class Master : MonoBehaviour
 
     public ParticleSystem BOOM;
     public GameObject BOOMfx;
+    public AudioSource BOOMsfx;
 
     public GameObject RunBtn;
     public GameObject ResetBtn;
     public List<GameObject> ButtonsToHide;
+    public AudioSource BtnClick;
     
     
     
@@ -49,10 +51,12 @@ public class Master : MonoBehaviour
 
     public void RunSim()
     {
+        BtnClick.Play();
         foreach (var i in ButtonsToHide)
         {
             i.SetActive(false);
         }
+        BOOMsfx.Play();
         RunBtn.SetActive(false);
         ResetBtn.SetActive(true);
         Rocket1_rb.AddForce(transform.up * UpwardVelocity * PercentageOfFuel, ForceMode.Impulse);
@@ -62,11 +66,13 @@ public class Master : MonoBehaviour
 
     public void ResetSim()
     {
+        BtnClick.Play();
         SceneManager.LoadScene("GameScene");
     }
 
     public void PercentageUp()
     {
+        BtnClick.Play();
         if (PercentageOfFuel < 1)
         {
             PercentageOfFuel = PercentageOfFuel + 0.1f;
@@ -75,6 +81,7 @@ public class Master : MonoBehaviour
 
     public void PercentageDown()
     {
+        BtnClick.Play();
         if (PercentageOfFuel > 0)
         {
             PercentageOfFuel = PercentageOfFuel - 0.1f;
