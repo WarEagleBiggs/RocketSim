@@ -26,7 +26,7 @@ public class Master : MonoBehaviour
     void Update()
     {
         
-        Rocket1_rb.AddForce(wind);
+        Rocket1_rb.AddForce(wind * Time.deltaTime);
         Velocity.SetText(Rocket1_rb.velocity.magnitude.ToString("0" + " m/s"));
         Altidude.SetText(Rocket1.transform.position.y.ToString("0" + " m"));
     }
