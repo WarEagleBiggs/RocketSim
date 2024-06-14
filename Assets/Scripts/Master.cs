@@ -10,15 +10,15 @@ public class Master : MonoBehaviour
     public GameObject Rocket1;
     private Rigidbody Rocket1_rb;
     
-    public float UpwardVelocity;
-    public float PercentageOfFuel;
+    public float UpwardVelocity; //max achieveable velocity for fuel type
+    public float PercentageOfFuel; 
     public float WindSpeed = 4000;
 
     public Vector3 wind;
     public TextMeshProUGUI Velocity;
     public TextMeshProUGUI Altidude;
-    
-    
+    public TextMeshProUGUI PercentageText;
+
     public ParticleSystem BOOM;
     public GameObject BOOMfx;
 
@@ -40,7 +40,7 @@ public class Master : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        PercentageText.SetText((PercentageOfFuel * 100).ToString("0") + "%");
         Rocket1_rb.AddForce(wind.normalized * WindSpeed * Time.deltaTime);
         Velocity.SetText(Rocket1_rb.velocity.magnitude.ToString("0" + " m/s"));
         Altidude.SetText(Rocket1.transform.position.y.ToString("0" + " m"));
@@ -58,5 +58,21 @@ public class Master : MonoBehaviour
     public void ResetSim()
     {
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void PercentageUp()
+    {
+        if (PercentageOfFuel < 1)
+        {
+            PercentageOfFuel = PercentageOfFuel + 0.1f;
+        }
+    }
+
+    public void PercentageDown()
+    {
+        if (PercentageOfFuel > 0)
+        {
+            PercentageOfFuel = PercentageOfFuel - 0.1f;
+        }
     }
 }
