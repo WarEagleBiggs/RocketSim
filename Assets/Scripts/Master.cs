@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Master : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class Master : MonoBehaviour
     public TextMeshProUGUI Altidude;
     public ParticleSystem BOOM;
     public GameObject BOOMfx;
+
+    public GameObject RunBtn;
+    public GameObject ResetBtn;
     
     
     // Start is called before the first frame update
@@ -33,9 +37,15 @@ public class Master : MonoBehaviour
 
     public void RunSim()
     {
-        
+        RunBtn.SetActive(false);
+        ResetBtn.SetActive(true);
         Rocket1_rb.AddForce(transform.up * UpwardVelocity, ForceMode.Impulse);
         BOOM.Play();
         BOOMfx.SetActive(true);
+    }
+
+    public void ResetSim()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 }
