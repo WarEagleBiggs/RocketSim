@@ -11,6 +11,8 @@ public class Master : MonoBehaviour
     public Vector3 wind;
     public TextMeshProUGUI Velocity;
     public TextMeshProUGUI Altidude;
+    public ParticleSystem BOOM;
+    public GameObject BOOMfx;
     
     
     // Start is called before the first frame update
@@ -33,5 +35,7 @@ public class Master : MonoBehaviour
     {
         
         Rocket1_rb.AddForce(transform.up * UpwardVelocity, ForceMode.Impulse);
+        BOOM.Play();
+        BOOMfx.SetActive(true);
     }
 }
