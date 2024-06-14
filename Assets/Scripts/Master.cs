@@ -24,6 +24,7 @@ public class Master : MonoBehaviour
 
     public GameObject RunBtn;
     public GameObject ResetBtn;
+    public List<GameObject> ButtonsToHide;
     
     
     
@@ -48,6 +49,10 @@ public class Master : MonoBehaviour
 
     public void RunSim()
     {
+        foreach (var i in ButtonsToHide)
+        {
+            i.SetActive(false);
+        }
         RunBtn.SetActive(false);
         ResetBtn.SetActive(true);
         Rocket1_rb.AddForce(transform.up * UpwardVelocity * PercentageOfFuel, ForceMode.Impulse);
