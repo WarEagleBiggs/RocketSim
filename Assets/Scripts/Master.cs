@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,6 +21,8 @@ public class Master : MonoBehaviour
     
     public float WindSpeed = 4000;
 
+    public TMP_InputField ThrustInput;
+
     
     
     // Start is called before the first frame update
@@ -32,6 +35,8 @@ public class Master : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpwardVelocity = Single.Parse(ThrustInput.text);
+        
         Rocket1_rb.AddForce(wind.normalized * WindSpeed * Time.deltaTime);
         Velocity.SetText(Rocket1_rb.velocity.magnitude.ToString("0" + " m/s"));
         Altidude.SetText(Rocket1.transform.position.y.ToString("0" + " m"));
