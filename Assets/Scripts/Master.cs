@@ -9,17 +9,25 @@ public class Master : MonoBehaviour
 {
     public GameObject Rocket1;
     private Rigidbody Rocket1_rb;
+    
     public float UpwardVelocity;
+    public float PercentageOfFuel;
+    public float WindSpeed = 4000;
+
     public Vector3 wind;
     public TextMeshProUGUI Velocity;
     public TextMeshProUGUI Altidude;
+    
+    
     public ParticleSystem BOOM;
     public GameObject BOOMfx;
 
     public GameObject RunBtn;
     public GameObject ResetBtn;
     
-    public float WindSpeed = 4000;
+    
+    
+    
 
 
     // Start is called before the first frame update
@@ -42,7 +50,7 @@ public class Master : MonoBehaviour
     {
         RunBtn.SetActive(false);
         ResetBtn.SetActive(true);
-        Rocket1_rb.AddForce(transform.up * UpwardVelocity, ForceMode.Impulse);
+        Rocket1_rb.AddForce(transform.up * UpwardVelocity * PercentageOfFuel, ForceMode.Impulse);
         BOOM.Play();
         BOOMfx.SetActive(true);
     }
