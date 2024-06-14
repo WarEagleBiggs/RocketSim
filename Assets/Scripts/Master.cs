@@ -18,6 +18,9 @@ public class Master : MonoBehaviour
     public GameObject RunBtn;
     public GameObject ResetBtn;
     
+    public float WindSpeed = 4000;
+
+    
     
     // Start is called before the first frame update
     void Start()
@@ -29,8 +32,7 @@ public class Master : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        Rocket1_rb.AddForce(wind * Time.deltaTime);
+        Rocket1_rb.AddForce(wind.normalized * WindSpeed * Time.deltaTime);
         Velocity.SetText(Rocket1_rb.velocity.magnitude.ToString("0" + " m/s"));
         Altidude.SetText(Rocket1.transform.position.y.ToString("0" + " m"));
     }
