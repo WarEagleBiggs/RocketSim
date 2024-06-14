@@ -87,4 +87,22 @@ public class Master : MonoBehaviour
             PercentageOfFuel = PercentageOfFuel - 0.1f;
         }
     }
+
+    public void RocketRight()
+    {
+        BtnClick.Play();
+    }
+    public void RocketLeft()
+    {
+        BtnClick.Play();
+    }
+    
+    public void FuelRight()
+    {
+        BtnClick.Play();
+    }
+    public void FuelLeft()
+    {
+        BtnClick.Play();
+    }
 }
