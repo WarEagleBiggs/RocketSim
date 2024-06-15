@@ -55,6 +55,11 @@ public class Master : MonoBehaviour
     private void FixedUpdate()
     {
         //physics
+        if (CanApplyForce)
+        {
+            Rocket1_rb.AddForce(transform.up * UpwardThrust * PercentageOfFuel, ForceMode.Impulse);
+        }
+        
     }
 
     public void RunSim()
@@ -68,7 +73,8 @@ public class Master : MonoBehaviour
         RunBtn.SetActive(false);
         ResetBtn.SetActive(true);
         //apply force
-        Rocket1_rb.AddForce(transform.up * UpwardThrust * PercentageOfFuel, ForceMode.Impulse);
+        CanApplyForce = true;
+        
         BOOM.Play();
         BOOMfx.SetActive(true);
     }
