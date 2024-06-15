@@ -30,8 +30,10 @@ public class Master : MonoBehaviour
     public GameObject ResetBtn;
     public List<GameObject> ButtonsToHide;
     public AudioSource BtnClick;
-    
-    
+
+    public int CurrRocket = 1;
+    public int CurrFuel = 1;
+    public TextMeshProUGUI CurrFuelTxt;
     
     
 
@@ -50,6 +52,26 @@ public class Master : MonoBehaviour
         Rocket1_rb.AddForce(wind.normalized * WindSpeed * Time.deltaTime);
         Velocity.SetText(Rocket1_rb.velocity.magnitude.ToString("0" + " m/s"));
         Altidude.SetText(Rocket1.transform.position.y.ToString("0" + " m"));
+
+        if (CurrFuel == 1)
+        {
+            //FUEL A
+            CurrFuelTxt.SetText("A");
+            UpwardThrust = 100;
+            BurnRate = 12;
+        } else if (CurrFuel == 2)
+        {
+            //FUEL B
+            CurrFuelTxt.SetText("B");
+            UpwardThrust = 300;
+            BurnRate = 4;
+        } else if (CurrFuel == 3)
+        {
+            //FUEL C
+            CurrFuelTxt.SetText("C");
+            UpwardThrust = 640;
+            BurnRate = 2;
+        }
     }
 
     private void FixedUpdate()
@@ -107,19 +129,36 @@ public class Master : MonoBehaviour
     public void RocketRight()
     {
         BtnClick.Play();
+        if (CurrRocket < 3)
+        {
+            CurrRocket++;
+        }
+        
     }
     public void RocketLeft()
     {
         BtnClick.Play();
+        if (CurrRocket > 1)
+        {
+            CurrRocket--;
+        }
     }
     
     public void FuelRight()
     {
         BtnClick.Play();
+        if (CurrFuel < 3)
+        {
+            CurrFuel++;
+        }
     }
     public void FuelLeft()
     {
         BtnClick.Play();
+        if (CurrFuel > 1)
+        {
+            CurrFuel--;
+        }
     }
 
     public IEnumerator BurnFuel()
