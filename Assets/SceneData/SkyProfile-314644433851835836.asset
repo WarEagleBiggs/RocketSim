@@ -73,7 +73,7 @@ MonoBehaviour:
   horizonCloudAnimationSpeed: 50
   enableOverheadCloud: 1
   overheadCloudColor: {r: 1, g: 1, b: 1, a: 0.24705882}
-  overheadCloudAltitude: 500
+  overheadCloudAltitude: 123.85
   overheadCloudSize: 4
   overheadCloudStep: 2
   overheadCloudAnimationSpeed: 50
@@ -164,7 +164,7 @@ Material:
     - _MoonLightIntensity: 0
     - _MoonSize: 0
     - _MoonSoftEdge: 0
-    - _OverheadCloudAltitude: 500
+    - _OverheadCloudAltitude: 123.85
     - _OverheadCloudAnimationSpeed: 50
     - _OverheadCloudFlowDirectionX: 1
     - _OverheadCloudFlowDirectionZ: 1
@@ -240,7 +240,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _OverheadCloudAltitude: 500
+    - _OverheadCloudAltitude: 123.85
     - _OverheadCloudAnimationSpeed: 50
     - _OverheadCloudFlowDirectionX: 1
     - _OverheadCloudFlowDirectionZ: 1
