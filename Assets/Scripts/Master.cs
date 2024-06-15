@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class Master : MonoBehaviour
 {
     public GameObject Rocket1;
     private Rigidbody Rocket1_rb;
-    
-    public float UpwardVelocity; //max achieveable velocity for fuel type
+
+    public bool CanApplyForce;
+    public float UpwardThrust;
+    public float BurnRate;
     public float PercentageOfFuel; 
     public float WindSpeed = 4000;
 
@@ -49,6 +52,11 @@ public class Master : MonoBehaviour
         Altidude.SetText(Rocket1.transform.position.y.ToString("0" + " m"));
     }
 
+    private void FixedUpdate()
+    {
+        //physics
+    }
+
     public void RunSim()
     {
         BtnClick.Play();
@@ -59,7 +67,8 @@ public class Master : MonoBehaviour
         BOOMsfx.Play();
         RunBtn.SetActive(false);
         ResetBtn.SetActive(true);
-        Rocket1_rb.AddForce(transform.up * UpwardVelocity * PercentageOfFuel, ForceMode.Impulse);
+        //apply force
+        Rocket1_rb.AddForce(transform.up * UpwardThrust * PercentageOfFuel, ForceMode.Impulse);
         BOOM.Play();
         BOOMfx.SetActive(true);
     }
