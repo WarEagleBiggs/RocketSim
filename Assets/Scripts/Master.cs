@@ -74,6 +74,7 @@ public class Master : MonoBehaviour
         ResetBtn.SetActive(true);
         //apply force
         CanApplyForce = true;
+        StartCoroutine(BurnFuel());
         
         BOOM.Play();
         BOOMfx.SetActive(true);
@@ -119,5 +120,12 @@ public class Master : MonoBehaviour
     public void FuelLeft()
     {
         BtnClick.Play();
+    }
+
+    public IEnumerator BurnFuel()
+    {
+        yield return new WaitForSeconds(BurnRate);
+        CanApplyForce = false;
+        BOOMfx.SetActive(false);
     }
 }
