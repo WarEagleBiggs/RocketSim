@@ -34,20 +34,33 @@ public class Master : MonoBehaviour
     public int CurrRocket = 1;
     public int CurrFuel = 1;
     public TextMeshProUGUI CurrFuelTxt;
-    
-    
 
-
-    // Start is called before the first frame update
+    public float ApexAltitude;
+    public GameObject ApexLine;
+    public bool canMoveApex = true;
+    public bool isRunning;
+    
     void Start()
     {
         Rocket1_rb = Rocket1.GetComponent<Rigidbody>();
         
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //leave at apex
+        if (canMoveApex)
+        {
+            ApexLine.transform.position = Rocket1.transform.position;
+        }
+
+        if (isRunning && Rocket1_rb.velocity.z == 1)
+        {
+            Debug.Log("Apex");
+            canMoveApex = false;
+        }
+
+        
         PercentageText.SetText((PercentageOfFuel * 100).ToString("0") + "%");
         Rocket1_rb.AddForce(wind.normalized * WindSpeed * Time.deltaTime);
         Velocity.SetText(Rocket1_rb.velocity.magnitude.ToString("0" + " m/s"));
@@ -86,6 +99,7 @@ public class Master : MonoBehaviour
 
     public void RunSim()
     {
+        isRunning = true;
         BtnClick.Play();
         foreach (var i in ButtonsToHide)
         {
