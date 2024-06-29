@@ -37,6 +37,7 @@ public class Master : MonoBehaviour
 
     public float ApexAltitude;
     public GameObject ApexLine;
+    public TextMeshPro ApexTxt;
     public bool canMoveApex = true;
     public bool isRunning;
     public bool canHappenOnce = false;
@@ -58,6 +59,7 @@ public class Master : MonoBehaviour
         if (isRunning && Rocket1_rb.velocity.y <= 1)
         {
             canMoveApex = false;
+            ApexTxt.SetText(ApexAltitude.ToString("0"));
             if (canHappenOnce)
             {
                 canHappenOnce = false;
@@ -87,7 +89,7 @@ public class Master : MonoBehaviour
         {
             //FUEL C
             CurrFuelTxt.SetText("C");
-            UpwardThrust = 640;
+            UpwardThrust = 620;
             BurnRate = 2;
         }
     }
@@ -197,6 +199,8 @@ public class Master : MonoBehaviour
     public IEnumerator StartApexCalc()
     {
         yield return new WaitForSeconds(1);
+        ApexTxt.SetText(" ");
+        ApexTxt.gameObject.SetActive(true);
         canMoveApex = true;
         canHappenOnce = true;
     }
