@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.Animations;
 
 public class Master : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class Master : MonoBehaviour
     public ParticleSystem BOOM;
     public GameObject BOOMfx;
     public AudioSource BOOMsfx;
+    public Animator TowerAnim;
 
     public GameObject RunBtn;
     public GameObject ResetBtn;
@@ -108,6 +110,8 @@ public class Master : MonoBehaviour
 
     public void RunSim()
     {
+        TowerAnim.SetBool("canRun", true);
+        
         isRunning = true;
         BtnClick.Play();
 
