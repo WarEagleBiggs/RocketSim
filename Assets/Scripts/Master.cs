@@ -54,11 +54,7 @@ public class Master : MonoBehaviour
             ApexLine.transform.position = Rocket1.transform.position;
         }
 
-        if (isRunning && Rocket1_rb.velocity.z == 1)
-        {
-            Debug.Log("Apex");
-            canMoveApex = false;
-        }
+        
 
         
         PercentageText.SetText((PercentageOfFuel * 100).ToString("0") + "%");
@@ -93,6 +89,11 @@ public class Master : MonoBehaviour
         if (CanApplyForce)
         {
             Rocket1_rb.AddForce(transform.up * UpwardThrust * PercentageOfFuel, ForceMode.Impulse);
+        }
+        
+        if (isRunning && Rocket1_rb.velocity.y <= 0)
+        {
+            canMoveApex = false;
         }
         
     }
