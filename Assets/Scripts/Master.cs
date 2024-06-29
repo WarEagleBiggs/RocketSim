@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Pinwheel.Jupiter;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.Animations;
+using Random = UnityEngine.Random;
 
 public class Master : MonoBehaviour
 {
@@ -44,9 +46,15 @@ public class Master : MonoBehaviour
     public bool isRunning;
     public bool canHappenOnce = false;
     
+    //sky fx
+    public JDayNightCycle NightCycleSettings;
+    public TextMeshProUGUI TimeTxt;
+    
     void Start()
     {
         Rocket1_rb = Rocket1.GetComponent<Rigidbody>();
+
+        NightCycleSettings.Time = Random.Range(1, 23);
 
         //set
         CurrRocket = Singleton.GetInstance.currRocket;
@@ -57,6 +65,11 @@ public class Master : MonoBehaviour
 
     void Update()
     {
+        
+        //set time txt
+        TimeTxt.SetText(NightCycleSettings.Time.ToString("0") + ":00 HRS");
+        
+        
         //leave at apex
         if (canMoveApex)
         {
