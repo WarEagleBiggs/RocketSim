@@ -47,7 +47,12 @@ public class Master : MonoBehaviour
     void Start()
     {
         Rocket1_rb = Rocket1.GetComponent<Rigidbody>();
-        
+
+        //set
+        CurrRocket = Singleton.GetInstance.currRocket;
+        CurrFuel = Singleton.GetInstance.currFuel;
+        PercentageOfFuel = Singleton.GetInstance.currQuantity;
+
     }
 
     void Update()
@@ -78,18 +83,21 @@ public class Master : MonoBehaviour
         if (CurrFuel == 1)
         {
             //FUEL A
+            Singleton.GetInstance.currFuel = 1;
             CurrFuelTxt.SetText("A");
             UpwardThrust = 100;
             BurnRate = 12;
         } else if (CurrFuel == 2)
         {
             //FUEL B
+            Singleton.GetInstance.currFuel = 2;
             CurrFuelTxt.SetText("B");
             UpwardThrust = 300;
             BurnRate = 4;
         } else if (CurrFuel == 3)
         {
             //FUEL C
+            Singleton.GetInstance.currFuel = 3;
             CurrFuelTxt.SetText("C");
             UpwardThrust = 620;
             BurnRate = 2;
@@ -146,6 +154,7 @@ public class Master : MonoBehaviour
         if (PercentageOfFuel < 1)
         {
             PercentageOfFuel = PercentageOfFuel + 0.1f;
+            Singleton.GetInstance.currQuantity = PercentageOfFuel;
         }
     }
 
@@ -155,6 +164,7 @@ public class Master : MonoBehaviour
         if (PercentageOfFuel > 0)
         {
             PercentageOfFuel = PercentageOfFuel - 0.1f;
+            Singleton.GetInstance.currQuantity = PercentageOfFuel;
         }
     }
 

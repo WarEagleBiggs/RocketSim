@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Singleton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private static Singleton instance;
+    
+    //things to keep track of
+    public int currRocket;
+    public int currFuel;
+    public float currQuantity;
 
-    // Update is called once per frame
-    void Update()
+    public static Singleton GetInstance => instance;
+
+    private void Awake()
     {
-        
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }
