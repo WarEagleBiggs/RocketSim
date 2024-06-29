@@ -64,7 +64,7 @@ MonoBehaviour:
   moonLightColor: {r: 0, g: 0, b: 0, a: 0}
   moonLightIntensity: 0
   customCloudTexture: {fileID: 2800000, guid: 433abcf8c760aa746a5580cd0a190b51, type: 3}
-  enableHorizonCloud: 1
+  enableHorizonCloud: 0
   horizonCloudColor: {r: 1, g: 1, b: 1, a: 0.31764707}
   horizonCloudStartPosition: -0.99
   horizonCloudEndPosition: 0.65
@@ -105,7 +105,6 @@ Material:
   m_ValidKeywords:
   - ALLOW_STEP_EFFECT
   - DETAIL_OVERLAY
-  - HORIZON_CLOUD
   - MOON
   - OVERHEAD_CLOUD
   - STARS
@@ -226,7 +225,6 @@ Material:
   - ALLOW_STEP_EFFECT
   m_InvalidKeywords:
   - DETAIL_OVERLAY
-  - HORIZON_CLOUD
   - MOON
   - OVERHEAD_CLOUD
   - STARS
