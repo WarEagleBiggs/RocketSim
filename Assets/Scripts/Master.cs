@@ -39,6 +39,7 @@ public class Master : MonoBehaviour
     public GameObject ApexLine;
     public bool canMoveApex = true;
     public bool isRunning;
+    public bool canHappenOnce = false;
     
     void Start()
     {
@@ -54,7 +55,15 @@ public class Master : MonoBehaviour
             ApexLine.transform.position = Rocket1.transform.position;
         }
 
-        
+        if (isRunning && Rocket1_rb.velocity.y <= 1)
+        {
+            canMoveApex = false;
+            if (canHappenOnce)
+            {
+                canHappenOnce = false;
+                ApexAltitude = Rocket1.transform.position.y;
+            }
+        }
 
         
         PercentageText.SetText((PercentageOfFuel * 100).ToString("0") + "%");
@@ -91,10 +100,7 @@ public class Master : MonoBehaviour
             Rocket1_rb.AddForce(transform.up * UpwardThrust * PercentageOfFuel, ForceMode.Impulse);
         }
         
-        if (isRunning && Rocket1_rb.velocity.y <= 0)
-        {
-            canMoveApex = false;
-        }
+        
         
     }
 
@@ -102,13 +108,18 @@ public class Master : MonoBehaviour
     {
         isRunning = true;
         BtnClick.Play();
+
+        StartCoroutine(StartApexCalc());
+        
         foreach (var i in ButtonsToHide)
         {
             i.SetActive(false);
         }
+        
         BOOMsfx.Play();
         RunBtn.SetActive(false);
         ResetBtn.SetActive(true);
+        
         //apply force
         CanApplyForce = true;
         StartCoroutine(BurnFuel());
@@ -181,5 +192,12 @@ public class Master : MonoBehaviour
         yield return new WaitForSeconds(BurnRate);
         CanApplyForce = false;
         BOOMfx.SetActive(false);
+    }
+
+    public IEnumerator StartApexCalc()
+    {
+        yield return new WaitForSeconds(1);
+        canMoveApex = true;
+        canHappenOnce = true;
     }
 }
