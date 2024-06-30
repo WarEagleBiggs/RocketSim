@@ -21,6 +21,8 @@ public class Master : MonoBehaviour
     public float WindSpeed = 4000;
 
     public Vector3 wind;
+    public bool canFakeApex;
+    public bool canAllow;
     public TextMeshProUGUI Velocity;
     public TextMeshProUGUI Altidude;
     public TextMeshProUGUI PercentageText;
@@ -78,7 +80,15 @@ public class Master : MonoBehaviour
 
         if (isRunning && Rocket1_rb.velocity.y <= 1)
         {
+            //apex
             canMoveApex = false;
+            if (canAllow)
+            {
+                canFakeApex = true;
+                Velocity.SetText("0 m/s");
+                StartCoroutine(FakeApexWait());
+            }
+
             ApexTxt.SetText(ApexAltitude.ToString("0"));
             if (canHappenOnce)
             {
@@ -90,7 +100,12 @@ public class Master : MonoBehaviour
         
         PercentageText.SetText((PercentageOfFuel * 100).ToString("0") + "%");
         Rocket1_rb.AddForce(wind.normalized * WindSpeed * Time.deltaTime);
-        Velocity.SetText(Rocket1_rb.velocity.magnitude.ToString("0" + " m/s"));
+        
+        if (!canFakeApex)
+        {
+            Velocity.SetText(Rocket1_rb.velocity.magnitude.ToString("0" + " m/s"));
+        }
+
         Altidude.SetText(Rocket1.transform.position.y.ToString("0" + " m"));
 
         if (CurrFuel == 1)
@@ -257,9 +272,17 @@ public class Master : MonoBehaviour
     public IEnumerator StartApexCalc()
     {
         yield return new WaitForSeconds(1);
+        canAllow = true;
         ApexTxt.SetText(" ");
         ApexTxt.gameObject.SetActive(true);
         canMoveApex = true;
         canHappenOnce = true;
+    }
+
+    public IEnumerator FakeApexWait()
+    {
+        yield return new WaitForSeconds(1);
+        canFakeApex = false;
+        canAllow = false;
     }
 }
