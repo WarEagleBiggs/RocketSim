@@ -18,12 +18,13 @@ public class Master : MonoBehaviour
     public float UpwardThrust;
     public float BurnRate;
     public float PercentageOfFuel; 
-    public float WindSpeed = 4000;
+    public float WindSpeed;
 
     public Vector3 wind;
     public TextMeshProUGUI Velocity;
     public TextMeshProUGUI Altidude;
     public TextMeshProUGUI PercentageText;
+    public TextMeshProUGUI WindSpeedTxt;
 
     public ParticleSystem BOOM;
     public GameObject BOOMfx;
@@ -60,6 +61,11 @@ public class Master : MonoBehaviour
         CurrRocket = Singleton.GetInstance.currRocket;
         CurrFuel = Singleton.GetInstance.currFuel;
         PercentageOfFuel = Singleton.GetInstance.currQuantity;
+        
+        //randomize wind
+        WindSpeed = Random.Range(1, 5);
+        //randomize wind direction
+        wind = new Vector3(Random.Range(-1f, 1.1f), 0, Random.Range(-1f, 1.1f));
 
     }
 
@@ -69,6 +75,7 @@ public class Master : MonoBehaviour
         //set time txt
         TimeTxt.SetText(NightCycleSettings.Time.ToString("0") + ":00 HRS");
         
+        WindSpeedTxt.SetText("Wind: " + (10 * WindSpeed).ToString("0") + " m/s");
         
         //leave at apex
         if (canMoveApex)
