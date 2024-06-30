@@ -99,11 +99,12 @@ public class Master : MonoBehaviour
 
         
         PercentageText.SetText((PercentageOfFuel * 100).ToString("0") + "%");
-        Rocket1_rb.AddForce(wind.normalized * WindSpeed * Time.deltaTime);
+        
+        Rocket1_rb.AddForce(wind.normalized * WindSpeed * 2000 * Time.deltaTime);
         
         if (!canFakeApex)
         {
-            Velocity.SetText(Rocket1_rb.velocity.magnitude.ToString("0" + " m/s"));
+            Velocity.SetText(Rocket1_rb.velocity.y.ToString("0" + " m/s"));
         }
 
         Altidude.SetText(Rocket1.transform.position.y.ToString("0" + " m"));
@@ -137,7 +138,7 @@ public class Master : MonoBehaviour
         //physics
         if (CanApplyForce)
         {
-            Rocket1_rb.AddForce(transform.up * UpwardThrust * PercentageOfFuel, ForceMode.Impulse);
+            Rocket1_rb.AddForce(new Vector3(0,  Rocket1.transform.position.y,0).normalized * UpwardThrust * PercentageOfFuel, ForceMode.Impulse);
         }
         
         
