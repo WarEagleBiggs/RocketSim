@@ -143,16 +143,22 @@ public class Master : MonoBehaviour
             i.SetActive(false);
         }
         
-        BOOMsfx.Play();
+        
+        
         RunBtn.SetActive(false);
         ResetBtn.SetActive(true);
         
         //apply force
         CanApplyForce = true;
         StartCoroutine(BurnFuel());
+
+        if (PercentageOfFuel != 0)
+        {
+            BOOMsfx.Play();
+            BOOM.Play();
+            BOOMfx.SetActive(true);
+        }
         
-        BOOM.Play();
-        BOOMfx.SetActive(true);
     }
 
     public void PauseGame()
