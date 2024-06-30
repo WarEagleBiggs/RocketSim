@@ -155,8 +155,18 @@ public class Master : MonoBehaviour
         BOOMfx.SetActive(true);
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+    public void FastForward()
+    {
+        Time.timeScale = 6;
+    }
+
     public void ResetSim()
     {
+        Time.timeScale = 1;
         BtnClick.Play();
         SceneManager.LoadScene("GameScene");
     }
