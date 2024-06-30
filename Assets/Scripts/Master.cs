@@ -157,11 +157,26 @@ public class Master : MonoBehaviour
 
     public void PauseGame()
     {
-        Time.timeScale = 0;
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+        
     }
     public void FastForward()
     {
-        Time.timeScale = 6;
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 6;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 
     public void ResetSim()
