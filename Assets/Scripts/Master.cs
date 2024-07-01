@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.Animations;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 public class Master : MonoBehaviour
 {
@@ -50,6 +51,9 @@ public class Master : MonoBehaviour
     //sky fx
     public JDayNightCycle NightCycleSettings;
     public TextMeshProUGUI TimeTxt;
+
+    public Image PauseColor;
+    public Image FastForwardColor;
     
     void Start()
     {
@@ -176,25 +180,33 @@ public class Master : MonoBehaviour
 
     public void PauseGame()
     {
-        if (Time.timeScale == 1)
+        if (Time.timeScale == 1 || Time.timeScale == 6)
         {
             Time.timeScale = 0;
+            PauseColor.color = Color.grey;
+            FastForwardColor.color = Color.white;
         }
         else
         {
             Time.timeScale = 1;
+            PauseColor.color = Color.white;
+            FastForwardColor.color = Color.white;
         }
         
     }
     public void FastForward()
     {
-        if (Time.timeScale == 1)
+        if (Time.timeScale == 1 || Time.timeScale == 0)
         {
             Time.timeScale = 6;
+            PauseColor.color = Color.white;
+            FastForwardColor.color = Color.grey;
         }
         else
         {
             Time.timeScale = 1;
+            PauseColor.color = Color.white;
+            FastForwardColor.color = Color.white;
         }
     }
 
