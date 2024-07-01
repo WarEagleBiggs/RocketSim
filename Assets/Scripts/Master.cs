@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Pinwheel.Jupiter;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -22,6 +23,7 @@ public class Master : MonoBehaviour
     public float WindSpeed;
 
     public Vector3 wind;
+    public GameObject WindDirectionIndicator;
     public TextMeshProUGUI Velocity;
     public TextMeshProUGUI Altidude;
     public TextMeshProUGUI PercentageText;
@@ -75,6 +77,13 @@ public class Master : MonoBehaviour
 
     void Update()
     {
+        Vector3 normalizedDirection = wind.normalized;
+
+        Quaternion targetRotation = Quaternion.LookRotation(normalizedDirection);
+
+        WindDirectionIndicator.transform.rotation = targetRotation;
+        
+        Debug.DrawRay(WindDirectionIndicator.transform.position, normalizedDirection, Color.magenta);
         
         //set time txt
         TimeTxt.SetText(NightCycleSettings.Time.ToString("0") + ":00 HRS");
