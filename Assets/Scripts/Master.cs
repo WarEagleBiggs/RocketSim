@@ -57,6 +57,17 @@ public class Master : MonoBehaviour
     public Image PauseColor;
     public Image FastForwardColor;
     
+    
+    //objects to toggle between rockets
+    public MeshRenderer Rocket1_Model;
+    public GameObject Rocket1_Trails;
+    public GameObject Rocket1_MiniModel;
+    
+    public GameObject Rocket2_Model;
+    public GameObject Rocket2_Trails;
+    public GameObject Rocket2_MiniModel;
+    
+    
     void Start()
     {
         Rocket1_rb = Rocket1.GetComponent<Rigidbody>();
@@ -140,6 +151,28 @@ public class Master : MonoBehaviour
             CurrFuelTxt.SetText("C");
             UpwardThrust = 620;
             BurnRate = 2;
+        }
+
+        if (CurrRocket == 1)
+        {
+            //Rocket 1
+            Rocket1_Model.enabled = true;
+            Rocket1_Trails.SetActive(true);
+            Rocket1_MiniModel.SetActive(true);
+            
+            Rocket2_Model.SetActive(false);
+            Rocket2_Trails.SetActive(false);
+            Rocket2_MiniModel.SetActive(false);
+        } else if (CurrRocket == 2)
+        {
+            Rocket1_Model.enabled = false;
+            Rocket1_Trails.SetActive(false);
+            Rocket1_MiniModel.SetActive(false);
+            
+            //Rocket 2
+            Rocket2_Model.SetActive(true);
+            Rocket2_Trails.SetActive(true);
+            Rocket2_MiniModel.SetActive(true);
         }
     }
 
