@@ -158,7 +158,7 @@ public class Master : MonoBehaviour
         if (CurrRocket == 1)
         {
             Singleton.GetInstance.currRocket = 1;
-            Rocket1_rb.mass = 150;
+            Rocket1_rb.mass = 120;
             
             //Rocket 1
             Rocket1_Model.enabled = true;
@@ -295,7 +295,7 @@ public class Master : MonoBehaviour
     public void RocketRight()
     {
         BtnClick.Play();
-        if (CurrRocket < 3)
+        if (CurrRocket < 2)
         {
             CurrRocket++;
         }
