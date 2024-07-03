@@ -56,7 +56,8 @@ public class Master : MonoBehaviour
 
     public Image PauseColor;
     public Image FastForwardColor;
-    
+
+    public int randomRotationDir;
     
     //objects to toggle between rockets
     public MeshRenderer Rocket1_Model;
@@ -75,6 +76,8 @@ public class Master : MonoBehaviour
         Rocket1_rb = Rocket1.GetComponent<Rigidbody>();
 
         NightCycleSettings.Time = Random.Range(1, 23);
+
+        randomRotationDir = Random.Range(1, 3);
 
         //set
         CurrRocket = Singleton.GetInstance.currRocket;
@@ -195,7 +198,14 @@ public class Master : MonoBehaviour
         if (CanApplyForce)
         {
             Rocket1_rb.AddForce(new Vector3(0,  Rocket1.transform.position.y,0).normalized * UpwardThrust * PercentageOfFuel, ForceMode.Impulse);
-            Rocket1_rb.AddTorque(transform.up * WindSpeed * 10);
+            
+            if (randomRotationDir == 1)
+            {
+                Rocket1_rb.AddTorque(transform.up * WindSpeed * 5);
+            } if (randomRotationDir == 2)
+            {
+                Rocket1_rb.AddTorque(transform.up * WindSpeed * -5);
+            }
         }
         
         
