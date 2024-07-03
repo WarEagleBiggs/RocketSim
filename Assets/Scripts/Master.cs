@@ -195,6 +195,7 @@ public class Master : MonoBehaviour
         if (CanApplyForce)
         {
             Rocket1_rb.AddForce(new Vector3(0,  Rocket1.transform.position.y,0).normalized * UpwardThrust * PercentageOfFuel, ForceMode.Impulse);
+            Rocket1_rb.AddTorque(transform.up * WindSpeed * 10);
         }
         
         
