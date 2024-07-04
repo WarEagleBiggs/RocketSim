@@ -29,6 +29,10 @@ public class Master : MonoBehaviour
     public TextMeshProUGUI PercentageText;
     public TextMeshProUGUI WindSpeedTxt;
 
+    public GameObject RocketExplosionObj;
+    public ParticleSystem RocketExplosion1;
+    public ParticleSystem RocketExplosion2;
+    public bool FollowingApex;
     public ParticleSystem BOOM;
     public GameObject BOOMfx;
     public AudioSource BOOMsfx;
@@ -91,6 +95,7 @@ public class Master : MonoBehaviour
 
     }
 
+
     void Update()
     {
         Vector3 normalizedDirection = wind.normalized;
@@ -116,6 +121,7 @@ public class Master : MonoBehaviour
         {
             //apex
             canMoveApex = false;
+            FollowingApex = true;
 
             ApexTxt.SetText(ApexAltitude.ToString("0"));
             if (canHappenOnce)
@@ -209,6 +215,14 @@ public class Master : MonoBehaviour
         }
         
         
+        
+    }
+
+    public void EXPLODE()
+    {
+        RocketExplosionObj.transform.position = Rocket1.transform.position;
+        RocketExplosion1.Play();
+        RocketExplosion2.Play();
         
     }
 
