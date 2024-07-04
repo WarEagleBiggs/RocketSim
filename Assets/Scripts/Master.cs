@@ -228,6 +228,7 @@ public class Master : MonoBehaviour
 
     public void RunSim()
     {
+        Rocket1_rb.isKinematic = false;
         TowerAnim.SetBool("canRun", true);
         
         isRunning = true;
