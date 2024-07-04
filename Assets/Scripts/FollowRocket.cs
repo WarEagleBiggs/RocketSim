@@ -12,5 +12,8 @@ public class FollowRocket : MonoBehaviour
         this.transform.position = new Vector3(target.transform.position.x,
             target.transform.position.y + 75,
             target.transform.position.z - 75);
+
+        transform.RotateAround(target.transform.position, Vector3.up, 1);
+        
     }
 }

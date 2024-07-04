@@ -202,7 +202,7 @@ public class Master : MonoBehaviour
             if (randomRotationDir == 1)
             {
                 Rocket1_rb.AddTorque(transform.up * WindSpeed * 5);
-            } if (randomRotationDir == 2)
+            } else
             {
                 Rocket1_rb.AddTorque(transform.up * WindSpeed * -5);
             }
