@@ -64,6 +64,7 @@ public class Master : MonoBehaviour
     public int randomRotationDir;
     
     //objects to toggle between rockets
+    public MeshCollider Rocket1_Collider;
     public MeshRenderer Rocket1_Model;
     public GameObject Rocket1_Trails;
     public GameObject Rocket1_MiniModel;
@@ -170,6 +171,7 @@ public class Master : MonoBehaviour
             Rocket1_rb.mass = 120;
             
             //Rocket 1
+            Rocket1_Collider.enabled = true;
             Rocket1_Model.enabled = true;
             Rocket1_Trails.SetActive(true);
             Rocket1_MiniModel.SetActive(true);
@@ -184,6 +186,7 @@ public class Master : MonoBehaviour
             Singleton.GetInstance.currRocket = 2;
             Rocket1_rb.mass = 100;
             
+            Rocket1_Collider.enabled = false;
             Rocket1_Model.enabled = false;
             Rocket1_Trails.SetActive(false);
             Rocket1_MiniModel.SetActive(false);
