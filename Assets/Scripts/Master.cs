@@ -19,7 +19,7 @@ public class Master : MonoBehaviour
     public bool CanApplyForce;
     public float UpwardThrust;
     public float BurnRate;
-    public int PercentageOfFuel; 
+    public float PercentageOfFuel; 
     public float WindSpeed;
 
     public Vector3 wind;
