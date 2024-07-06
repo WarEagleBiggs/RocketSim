@@ -74,6 +74,11 @@ public class Master : MonoBehaviour
     public GameObject Rocket2_Trails;
     public GameObject Rocket2_MiniModel;
     public GameObject Rocket2_Image;
+
+    public GameObject Rocket3_Model;
+    public GameObject Rocket3_Trails;
+    public GameObject Rocket3_MiniModel;
+    public GameObject Rocket3_Image;
     
     
     void Start()
@@ -168,7 +173,7 @@ public class Master : MonoBehaviour
         if (CurrRocket == 1)
         {
             Singleton.GetInstance.currRocket = 1;
-            Rocket1_rb.mass = 120;
+            Rocket1_rb.mass = 130;
             
             //Rocket 1
             Rocket1_Collider.enabled = true;
@@ -181,6 +186,11 @@ public class Master : MonoBehaviour
             Rocket2_Trails.SetActive(false);
             Rocket2_MiniModel.SetActive(false);
             Rocket2_Image.SetActive(false);
+            
+            Rocket3_Model.SetActive(false);
+            Rocket3_Trails.SetActive(false);
+            Rocket3_MiniModel.SetActive(false);
+            Rocket3_Image.SetActive(false);
         } else if (CurrRocket == 2)
         {
             Singleton.GetInstance.currRocket = 2;
@@ -197,7 +207,32 @@ public class Master : MonoBehaviour
             Rocket2_Trails.SetActive(true);
             Rocket2_MiniModel.SetActive(true);
             Rocket2_Image.SetActive(true);
+            
+            Rocket3_Model.SetActive(false);
+            Rocket3_Trails.SetActive(false);
+            Rocket3_MiniModel.SetActive(false);
+            Rocket3_Image.SetActive(false);
+        } else if (CurrRocket == 3)
+        {
+            Singleton.GetInstance.currRocket = 3;
+            Rocket1_rb.mass = 120;
+            
+            Rocket1_Collider.enabled = false;
+            Rocket1_Model.enabled = false;
+            Rocket1_Trails.SetActive(false);
+            Rocket1_MiniModel.SetActive(false);
+            Rocket1_Image.SetActive(false);
+            
+            Rocket2_Model.SetActive(false);
+            Rocket2_Trails.SetActive(false);
+            Rocket2_MiniModel.SetActive(false);
+            Rocket2_Image.SetActive(false);
 
+            //rocket 3
+            Rocket3_Model.SetActive(true);
+            Rocket3_Trails.SetActive(true);
+            Rocket3_MiniModel.SetActive(true);
+            Rocket3_Image.SetActive(true);
         }
     }
 
