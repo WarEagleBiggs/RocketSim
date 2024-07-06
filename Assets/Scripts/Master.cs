@@ -19,7 +19,7 @@ public class Master : MonoBehaviour
     public bool CanApplyForce;
     public float UpwardThrust;
     public float BurnRate;
-    public float PercentageOfFuel; 
+    public int PercentageOfFuel; 
     public float WindSpeed;
 
     public Vector3 wind;
@@ -138,7 +138,7 @@ public class Master : MonoBehaviour
         }
 
         
-        PercentageText.SetText((PercentageOfFuel * 100).ToString("0") + "%");
+        PercentageText.SetText((PercentageOfFuel).ToString("0") + "%");
         
         Rocket1_rb.AddForce(wind.normalized * WindSpeed * 2000 * Time.deltaTime);
         
@@ -241,7 +241,7 @@ public class Master : MonoBehaviour
         //physics
         if (CanApplyForce)
         {
-            Rocket1_rb.AddForce(new Vector3(0,  Rocket1.transform.position.y,0).normalized * UpwardThrust * PercentageOfFuel, ForceMode.Impulse);
+            Rocket1_rb.AddForce(new Vector3(0,  Rocket1.transform.position.y,0).normalized * UpwardThrust * (PercentageOfFuel / 100), ForceMode.Impulse);
             
             if (randomRotationDir == 1)
             {
@@ -339,9 +339,9 @@ public class Master : MonoBehaviour
     public void PercentageUp()
     {
         BtnClick.Play();
-        if (PercentageOfFuel < 1)
+        if (PercentageOfFuel < 100)
         {
-            PercentageOfFuel = PercentageOfFuel + 0.1f;
+            PercentageOfFuel = PercentageOfFuel + 10;
             Singleton.GetInstance.currQuantity = PercentageOfFuel;
         }
     }
@@ -351,7 +351,7 @@ public class Master : MonoBehaviour
         BtnClick.Play();
         if (PercentageOfFuel > 0)
         {
-            PercentageOfFuel = PercentageOfFuel - 0.1f;
+            PercentageOfFuel = PercentageOfFuel - 10;
             Singleton.GetInstance.currQuantity = PercentageOfFuel;
         }
     }

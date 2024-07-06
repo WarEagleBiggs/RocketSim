@@ -9,7 +9,7 @@ public class Singleton : MonoBehaviour
     //things to keep track of
     public int currRocket;
     public int currFuel;
-    public float currQuantity;
+    public int currQuantity;
 
     public static Singleton GetInstance => instance;
 
