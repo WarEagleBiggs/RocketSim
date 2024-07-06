@@ -359,7 +359,7 @@ public class Master : MonoBehaviour
     public void RocketRight()
     {
         BtnClick.Play();
-        if (CurrRocket < 2)
+        if (CurrRocket < 3)
         {
             CurrRocket++;
         }
