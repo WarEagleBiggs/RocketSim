@@ -398,6 +398,11 @@ public class Master : MonoBehaviour
         BOOMfx.SetActive(false);
     }
 
+
+    public void HomeBtn()
+    {
+        SceneManager.LoadScene("Menu");
+    }
     public IEnumerator StartApexCalc()
     {
         yield return new WaitForSeconds(1);
