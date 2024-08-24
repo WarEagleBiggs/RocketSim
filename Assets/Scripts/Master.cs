@@ -79,7 +79,9 @@ public class Master : MonoBehaviour
     public GameObject Rocket3_Trails;
     public GameObject Rocket3_MiniModel;
     public GameObject Rocket3_Image;
-    
+
+
+    public GameObject TutorialPage;
     
     void Start()
     {
@@ -402,6 +404,11 @@ public class Master : MonoBehaviour
     public void HomeBtn()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void TutorialBtn()
+    {
+        TutorialPage.SetActive(!TutorialPage.activeSelf);
     }
     public IEnumerator StartApexCalc()
     {
