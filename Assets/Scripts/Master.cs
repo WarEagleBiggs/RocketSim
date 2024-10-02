@@ -49,6 +49,8 @@ public class Master : MonoBehaviour
 
     public float ApexAltitude;
     public GameObject ApexLine;
+    public GameObject BurnLine;
+    public bool ifCanMoveBurn;
     public TextMeshPro ApexTxt;
     public bool canMoveApex = true;
     public bool isRunning;
@@ -82,6 +84,13 @@ public class Master : MonoBehaviour
 
 
     public GameObject TutorialPage;
+
+    public float timeElapse;
+    public float timeElapseApex;
+    public TextMeshProUGUI TimeElapTxt;
+    public TextMeshPro TimeElapApexTxt;
+    public bool canTimeElapse;
+    public bool canTimeElapseApex;
     
     void Start()
     {
@@ -106,6 +115,18 @@ public class Master : MonoBehaviour
 
     void Update()
     {
+        if (canTimeElapse)
+        {
+            timeElapse += 1 * Time.deltaTime;
+        }
+
+        if (canTimeElapse && canTimeElapseApex)
+        {
+            timeElapseApex += 1 * Time.deltaTime;
+        }
+        
+        TimeElapTxt.SetText(timeElapse.ToString("#.00"));
+        
         Vector3 normalizedDirection = wind.normalized;
 
         Quaternion targetRotation = Quaternion.LookRotation(normalizedDirection);
@@ -125,16 +146,24 @@ public class Master : MonoBehaviour
             ApexLine.transform.position = Rocket1.transform.position;
         }
 
+        if (ifCanMoveBurn)
+        {
+            BurnLine.transform.position = Rocket1.transform.position;
+        }
+
         if (isRunning && Rocket1_rb.velocity.y <= 1)
         {
             //apex
             canMoveApex = false;
             FollowingApex = true;
+            canTimeElapseApex = false;
 
             ApexTxt.SetText(ApexAltitude.ToString("0"));
+            TimeElapApexTxt.SetText("T: " + timeElapseApex.ToString("#.00"));
             if (canHappenOnce)
             {
                 canHappenOnce = false;
+                timeElapseApex = timeElapse;
                 ApexAltitude = Rocket1.transform.position.y;
             }
         }
@@ -147,7 +176,7 @@ public class Master : MonoBehaviour
         Velocity.SetText(Rocket1_rb.velocity.y.ToString("0" + " m/s"));
         
 
-        Altidude.SetText(Rocket1.transform.position.y.ToString("0" + " m"));
+        Altidude.SetText(Rocket1.transform.position.y.ToString("0" + " m" ));
 
         if (CurrFuel == 1)
         {
@@ -244,7 +273,11 @@ public class Master : MonoBehaviour
         if (CanApplyForce)
         {
             Rocket1_rb.AddForce(new Vector3(0,  Rocket1.transform.position.y,0).normalized * UpwardThrust * (PercentageOfFuel / 100), ForceMode.Impulse);
-            
+            if (Rocket1_rb.mass >= 10)
+            {
+                Rocket1_rb.mass -= 1 * Time.deltaTime;
+            }
+
             if (randomRotationDir == 1)
             {
                 Rocket1_rb.AddTorque(transform.up * WindSpeed * 5);
@@ -268,6 +301,7 @@ public class Master : MonoBehaviour
 
     public void RunSim()
     {
+        canTimeElapse = true;
         Rocket1_rb.isKinematic = false;
         TowerAnim.SetBool("canRun", true);
         
@@ -396,6 +430,7 @@ public class Master : MonoBehaviour
     public IEnumerator BurnFuel()
     {
         yield return new WaitForSeconds(BurnRate);
+        ifCanMoveBurn = false;
         CanApplyForce = false;
         BOOMfx.SetActive(false);
     }
@@ -415,6 +450,8 @@ public class Master : MonoBehaviour
         yield return new WaitForSeconds(1);
         ApexTxt.SetText(" ");
         ApexTxt.gameObject.SetActive(true);
+        TimeElapApexTxt.gameObject.SetActive(true);
+        TimeElapApexTxt.SetText(" ");
         canMoveApex = true;
         canHappenOnce = true;
     }
